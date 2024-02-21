@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import PropTypes from 'prop-types';
 
 // Prepares the dataLayer
 export const StateContext = createContext();
@@ -12,3 +13,9 @@ export const StateProvider = ({ reducer, initialState, children }) => (
 
 // Pull information from the data layer
 export const useStateValue = () => useContext(StateContext);
+
+StateProvider.propTypes = {
+  reducer: PropTypes.func.isRequired,
+  initialState: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired
+};
